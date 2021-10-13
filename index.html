@@ -14,24 +14,27 @@
 <body>
     <div>
         <header id="cabecalho">
-            <h1>JavaScript <span class="love"><i class="fas fa-heart"></i></span> Firebase</h1>
+            <h1>Sistema de Detecção de Gases Inflamáveis</h1>
         </header>
         <section id="sensores">
-            <h2>Sistema de Detecção de Gases Inflamáveis</h2>
+            <h2>Monitoramento do Sensor</h2>
             <section class="linha">
                 <article class="card">
                     <div class="cabecalho-card">
-                        <i class="fab fa-watchman-monitoring"></i>
+                        <i class="fas fa-burn"></i>
                     </div>
                     <div class="rodape-card">
-                        <h3>Sensor de Presença (PIR)</h3>
+                        <h3>Sensor de Gás (MQ-2)</h3>
                         <div class="sinais">
                             <div id="sinal-verde" class="sinal"></div>
                             <div id="sinal-vermelho" class="sinal"></div>
                         </div>
                         <p>
                             <img id="loading" src="https://olaargentina.com/wp-content/uploads/2019/11/loading-gif-transparent-10.gif">
-                            <span id="status"></span>
+                            <span id="status"> </span>
+                        </p>
+                        <p>
+                            <a id="telefone-bombeiros" href="tel:193"><i class="fas fa-phone-alt"></i> Acionar Corpo de Bombeiros</a>
                         </p>
                     </div>
                 </article>
@@ -39,7 +42,7 @@
         </section>
         <footer>
             <p></p>
-            <p>Protocolos de Comunicação para IoT / Pós-Graduação em Internet das Coisas</p>
+            <p>Plataformas de Prototipação para Internet / Pós-Graduação em Internet das Coisas</p>
             <p>Instituto Federal de Educação, Ciência e Tecnologia de São Paulo - Campus Catanduva</p>
         </footer>
     </div>

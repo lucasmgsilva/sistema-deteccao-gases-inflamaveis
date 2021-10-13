@@ -20,7 +20,7 @@
     import { getDatabase, ref, onValue, query, limitToLast } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js";
 
     const db = getDatabase();
-    const dbRef = query(ref(db, '/sensores/pir/'), limitToLast(1));
+    const dbRef = query(ref(db, '/sensores/gas_inflamavel/'), limitToLast(1));
 
     let spanStatus = document.getElementById('status');
     let imgLoading = document.getElementById('loading');
@@ -28,8 +28,7 @@
     let divSinalVerde = document.getElementById('sinal-verde');
     let divSinalVermelho = document.getElementById('sinal-vermelho');
 
-    const somAlerta = new Audio('../sounds/Spaceship Alarm.mp3');
-    somAlerta.loop = true;
+    const aTelefoneBombeiros = document.getElementById('telefone-bombeiros');
 
     let cores = {
         'amarelo_escuro': '#404000',
@@ -47,31 +46,21 @@
             const childKey = childSnapshot.key;
             const childData = childSnapshot.val();
             console.log("Chave: " + childKey);
-            console.log("Valor: " + childData);
-            console.log(childData);
-            exibeNiveisMonoxidoCarbono(childKey, childData);
+            console.log("Valor: " + childData.detectado);
+            exibeNiveisMonoxidoCarbono(childKey, childData.detectado);
         });
     });
 
-    function ativaSomAlerta(){
-        somAlerta.currentTime = 0;
-        somAlerta.play();
-    }
-
-    function desativaSomAlerta(){
-        somAlerta.pause();
-    }
-
     function acionaSinalVerde(msg){
-        divSinalVerde.style = 'background-color: ' + cores['verde'];
+        divSinalVerde.style.backgroundColor = cores['verde'];
         spanStatus.innerText = msg;
-        //desativaSomAlerta();
+        aTelefoneBombeiros.style.display = 'none';
     }
 
     function acionaSinalVermelho(msg){
-        divSinalVermelho.style = 'background-color: ' + cores['vermelho'];
+        divSinalVermelho.style.backgroundColor = cores['vermelho'];
         spanStatus.innerText = msg;
-        //ativaSomAlerta();
+        aTelefoneBombeiros.style.display = 'inline-block';
     }
 
     function apagaTodosSinais(){
@@ -81,11 +70,11 @@
 
     function exibeNiveisMonoxidoCarbono(key, data) {
         apagaTodosSinais();
-        let movimentoDetectado = data;
+        let gasDetectado = data;
 
-        if (movimentoDetectado == 0){
-            acionaSinalVerde("Tudo bem :)");
+        if (gasDetectado == false){
+            acionaSinalVerde("😉\nTudo bem!");
         } else {
-            acionaSinalVermelho("Movimento detectado!");
+            acionaSinalVermelho("😱\nGás inflamável detectado!");
         }
     }

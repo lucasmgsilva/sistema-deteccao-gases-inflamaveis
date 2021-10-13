@@ -64,6 +64,19 @@ div.rodape-card p img {
     height: 27px;
 }
 
+div.rodape-card p a#telefone-bombeiros {
+    display: none;
+    color: white;
+    background-color: #282c30;
+    text-decoration: none;
+    padding: 25px;
+    border-radius: 20px;
+}
+
+div.rodape-card p a#telefone-bombeiros i {
+    display:block;
+    padding-bottom: 10px;
+}
 
 div.sinais {
     display: flex;
